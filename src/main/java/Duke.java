@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Duke {
 
     public static void main(String[] args) {
-        Task[] inputRec = new Task[100];
-        int inputNo = 0;
+        Task[] taskList = new Task[100];
+        int taskNo = 0;
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -18,23 +18,36 @@ public class Duke {
                 System.out.println("Bye. Hope to see you again soon!");
                 return;
             } else if (cmd.equalsIgnoreCase("list")) {
-                for (int i = 0; i < inputNo;i++) {
-                    Task curTask = inputRec[i];
-                    System.out.println(String.valueOf(i + 1) + "." + curTask.getStatusIcon() + " " + curTask.getDescription());
+                System.out.println("Here are the tasks in your list:");
+                for (int i = 0; i < taskNo;i++) {
+                    System.out.println(String.valueOf(i + 1) + "." + taskList[i].toString());
                 }
             } else if (cmd.startsWith("done ")) {
-                //System.out.println(cmd.substring(5).trim());
                 int inputIndex = Integer.parseInt(cmd.substring(5).trim());
-                Task curTask = inputRec[inputIndex - 1];
+                Task curTask = taskList[inputIndex - 1];
                 curTask.taskDone();
                 System.out.println("Nice! I've marked this task as done: ");
-                System.out.println(curTask.getStatusIcon() + " " + curTask.getDescription());
+                System.out.println(curTask.toString());
             } else {
-                inputRec[inputNo++] = new Task(cmd);
-                System.out.println("added: " + cmd);
-                //System.out.println(inputNo);
+
+                String[] curTask = cmd.split(" ",2);
+                switch (curTask[0]) {
+                case "todo" :
+                    taskList[taskNo++] = new ToDo(curTask[1]);
+                    break;
+                case "deadline" :
+                    String[] ddlDetails = curTask[1].split("/",2);
+                    taskList[taskNo++] = new Deadline(ddlDetails[0],ddlDetails[1]);
+                    break;
+                case "event" :
+                    String[] eventDetails = curTask[1].split("/",2);
+                    taskList[taskNo++] = new Event(eventDetails[0],eventDetails[1]);
+                    break;
+                }
+                System.out.println("Got it. I've added this task: ");
+                System.out.println(taskList[taskNo-1].toString());
+                System.out.println("Now you have " + taskNo + " tasks in the list.");
             }
         }
-
     }
 }

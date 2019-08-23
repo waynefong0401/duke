@@ -3,11 +3,8 @@ import java.util.Scanner;
 public class Duke {
 
     public static void main(String[] args) {
-        String[] inputRec = new String[100];
+        Task[] inputRec = new Task[100];
         int inputNo = 0;
-        inputRec[0] = "111";
-        inputRec[1] = "111";
-        inputRec[2] = "111";
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -22,10 +19,18 @@ public class Duke {
                 return;
             } else if (cmd.equalsIgnoreCase("list")) {
                 for (int i = 0; i < inputNo;i++) {
-                    System.out.println(String.valueOf(i + 1) + "." + inputRec[i]);
+                    Task curTask = inputRec[i];
+                    System.out.println(String.valueOf(i + 1) + "." + curTask.getStatusIcon() + " " + curTask.getDescription());
                 }
+            } else if (cmd.startsWith("done ")) {
+                //System.out.println(cmd.substring(5).trim());
+                int inputIndex = Integer.parseInt(cmd.substring(5).trim());
+                Task curTask = inputRec[inputIndex - 1];
+                curTask.taskDone();
+                System.out.println("Nice! I've marked this task as done: ");
+                System.out.println(curTask.getStatusIcon() + " " + curTask.getDescription());
             } else {
-                inputRec[inputNo++] = cmd;
+                inputRec[inputNo++] = new Task(cmd);
                 System.out.println("added: " + cmd);
                 //System.out.println(inputNo);
             }

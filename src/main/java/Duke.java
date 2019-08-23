@@ -1,7 +1,13 @@
 import java.util.Scanner;
 
 public class Duke {
+
     public static void main(String[] args) {
+        String[] inputRec = new String[100];
+        int inputNo = 0;
+        inputRec[0] = "111";
+        inputRec[1] = "111";
+        inputRec[2] = "111";
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -12,10 +18,16 @@ public class Duke {
         while (true) {
             String cmd = scanner.nextLine();
             if (cmd.equalsIgnoreCase("bye")) {
-                System.out.println("Bye. Hope to see you again soon!\n");
+                System.out.println("Bye. Hope to see you again soon!");
                 return;
+            } else if (cmd.equalsIgnoreCase("list")) {
+                for (int i = 0; i < inputNo;i++) {
+                    System.out.println(String.valueOf(i + 1) + "." + inputRec[i]);
+                }
             } else {
-                System.out.println(cmd);
+                inputRec[inputNo++] = cmd;
+                System.out.println("added: " + cmd);
+                //System.out.println(inputNo);
             }
         }
 

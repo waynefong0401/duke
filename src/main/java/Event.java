@@ -1,10 +1,11 @@
 public class Event extends Task {
-
     protected String at;
+    private static String TASKTYPE = "event";
 
-    public Event(String description,String at) {
-        super(description);
-        this.at = at;
+    public Event(String[] curTask) throws NoDescriptionException, NoTimeException {
+        super(curTask[0],TASKTYPE);
+        if (curTask[1].isBlank()) throw new NoTimeException(TASKTYPE);
+        else this.at = curTask[1];
     }
 
     @Override

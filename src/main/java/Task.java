@@ -1,14 +1,20 @@
 public class Task {
     protected String description;
     protected boolean isDone;
+    private String taskType;
 
-    public Task(String description) {
-        this.description = description;
+    public Task(String description,String taskType) throws NoDescriptionException {
+        this.taskType = taskType;
+
+        if (description.isBlank()) throw new NoDescriptionException(taskType);
+        else this.description = description;
+
         this.isDone = false;
     }
 
-    public void taskDone() {
+    public Task taskDone() {
         this.isDone = true;
+        return this;
     }
 
     public String getDescription() {

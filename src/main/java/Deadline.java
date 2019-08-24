@@ -1,10 +1,11 @@
 public class Deadline extends Task {
-
     protected String by;
+    private static String TASKTYPE= "event";
 
-    public Deadline(String description, String by) {
-        super(description);
-        this.by = by;
+    public Deadline(String[] curTask) throws NoDescriptionException, NoTimeException {
+        super(curTask[0],TASKTYPE);
+        if (curTask[1].isBlank()) throw new NoTimeException(TASKTYPE);
+        else this.by = curTask[1];
     }
 
     @Override

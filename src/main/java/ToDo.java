@@ -1,6 +1,8 @@
 public class ToDo extends Task {
-    public ToDo(String description) {
-        super(description);
+    private static String TASKTYPE = "todo";
+    
+    public ToDo(String des) throws NoDescriptionException {
+            super(des,TASKTYPE);
     }
 
     @Override

@@ -1,19 +1,9 @@
 import java.util.ArrayList;
 
 public class TaskList extends ArrayList<Task> {
+
     public TaskList() {
         super();
-    }
-
-    public Task doneTask(String cmd) throws TaskNotExistException {
-        try {
-            //int inputIndex = Integer.parseInt(cmd.substring(4).trim());
-            return get(Integer.parseInt(cmd.substring(4).trim()) - 1).taskDone();
-        } catch (NumberFormatException e) {
-            throw new NotNumberException();
-        } catch (IndexOutOfBoundsException e) {
-            throw new TaskNotExistException();
-        }
     }
 
     public void addTask(String cmd) throws NoDescriptionException, NoTimeException {
@@ -48,5 +38,25 @@ public class TaskList extends ArrayList<Task> {
         System.out.println("Got it. I've added this task: ");
         System.out.println(get(size() - 1).toString());
         System.out.println("Now you have " + String.valueOf(size()) + " tasks in the list.");
+    }
+
+    public Task doneTask(String cmd) throws TaskNotExistException {
+        try {
+            return get(Integer.parseInt(cmd.substring(4).trim()) - 1).taskDone();
+        } catch (NumberFormatException e) {
+            throw new NotNumberException();
+        } catch (IndexOutOfBoundsException e) {
+            throw new TaskNotExistException();
+        }
+    }
+
+    public Task deleteTask(String cmd) throws TaskNotExistException {
+        try {
+            return remove(Integer.parseInt(cmd.substring(6).trim()) - 1);
+        } catch (NumberFormatException e) {
+            throw new NotNumberException();
+        } catch (IndexOutOfBoundsException e) {
+            throw new TaskNotExistException();
+        }
     }
 }

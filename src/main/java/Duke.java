@@ -29,14 +29,21 @@ public class Duke {
                 } else if (cmd.startsWith("done")) {
                     if (!cmd.split(" ",2)[0].equalsIgnoreCase("done")) {
                         taskList.addTask(cmd);
-//                        System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
                         continue;
                     }
-//                    int inputIndex = Integer.parseInt(cmd.substring(4).trim());
                     Task doneTask = taskList.doneTask(cmd);
                     System.out.println("Nice! I've marked this task as done: ");
                     System.out.println(doneTask.toString());
-                }else {
+                } else if (cmd.startsWith("delete")){
+                    if (!cmd.split(" ",2)[0].equalsIgnoreCase("delete")) {
+                        taskList.addTask(cmd);
+                        continue;
+                    }
+                    Task deleteTask = taskList.deleteTask(cmd);
+                    System.out.println("Noted. I've removed this task: ");
+                    System.out.println(deleteTask.toString());
+                    System.out.println("Now you have " + taskList.size() + " tasks in the list.");
+                } else {
                     taskList.addTask(cmd);
                 }
             } catch (NoDescriptionException e) {

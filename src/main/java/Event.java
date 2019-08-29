@@ -1,16 +1,23 @@
-public class Event extends Task {
-    protected String at;
-    private static String TASKTYPE = "event";
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    public Event(String[] curTask) throws NoDescriptionException, NoTimeException {
+public class Event extends Task {
+    protected Date at;
+    private static String TASKTYPE = "event";
+    private static SimpleDateFormat DATEFORMAT = new SimpleDateFormat(("dd/MM/yyyy HHmm"));
+
+    public Event(String[] curTask) throws NoDescriptionException, NoTimeException, ParseException {
         super(curTask[0],TASKTYPE);
         if (curTask[1].isBlank()) throw new NoTimeException(TASKTYPE);
-        else this.at = curTask[1];
+        else {
+            this.at = DATEFORMAT.parse(curTask[1]);
+        }
     }
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (at: " + at + ")";
+        return "[E]" + super.toString() + " (at: " + DATEFORMAT.format(at) + ")";
     }
 
 }

@@ -1,3 +1,4 @@
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class TaskList extends ArrayList<Task> {
@@ -6,7 +7,7 @@ public class TaskList extends ArrayList<Task> {
         super();
     }
 
-    public void addTask(String cmd) throws NoDescriptionException, NoTimeException {
+    public void addTask(String cmd) throws NoDescriptionException, NoTimeException, ParseException {
         boolean isTask = true;
         String[] curTask = {"",""};
         String[] tempCurTask = cmd.split(" ", 2);

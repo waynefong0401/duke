@@ -1,5 +1,6 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -9,7 +10,8 @@ public class TaskList extends ArrayList<Task> {
         super();
     }
 
-    public void addTask(String cmd) throws NoDescriptionException, NoTimeException, IOException {
+
+    public void addTask(String cmd) throws NoDescriptionException, NoTimeException, ParseException, IOException {
         boolean isTask = true;
         String[] curTask = {"",""};
         String[] tempCurTask = cmd.split(" ", 2);

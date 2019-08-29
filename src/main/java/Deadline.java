@@ -17,7 +17,7 @@ public class Deadline extends Task {
 
     @Override
     public String getPrintableMsg() {
-        return "D" + " | " + (isDone ? "1" : "0") + " | " + description + " | " + by;
+        return "D" + " | " + (isDone ? "1" : "0") + " | " + description + " | " + DATEFORMAT.format(by);
     }
 
     @Override

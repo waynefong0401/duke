@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -54,6 +55,8 @@ public class Duke {
                 System.out.println(e.toString());
             } catch (NumberFormatException e) {
                 System.out.println(e.toString());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }

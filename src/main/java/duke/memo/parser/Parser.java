@@ -2,9 +2,6 @@ package duke.memo.parser;
 
 import duke.memo.command.*;
 import duke.memo.exception.DukeException;
-import duke.memo.task.Task;
-
-import java.util.Iterator;
 
 public class Parser {
     public static Command parse(String cmd) throws DukeException {

@@ -49,10 +49,6 @@ public class Ui {
                 + "\nNow you have " + taskNo + " tasks in the list.");
     }
 
-    public void showTaskTypeError() {
-        System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
-    }
-
     public void showAddedTask(String addedTask,int taskListLength) {
         System.out.println("Got it. I've added this task: ");
         System.out.println(addedTask);

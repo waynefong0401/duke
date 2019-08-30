@@ -8,10 +8,6 @@ public class NoTimeException extends DukeException{
         this.taskType = taskType;
     }
 
-    public String getTaskType() {
-        return taskType;
-    }
-
     @Override
     public String getMessage() {
         return "OOPS!!! The time details of a " + taskType + " cannot be empty.";

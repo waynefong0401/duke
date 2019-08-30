@@ -8,10 +8,6 @@ public class NoDescriptionException extends DukeException{
         this.taskType = taskType;
     }
 
-    public String getTaskType() {
-        return taskType;
-    }
-
     @Override
     public String getMessage() {
         return "OOPS!!! The description of a " + taskType + " cannot be empty.";

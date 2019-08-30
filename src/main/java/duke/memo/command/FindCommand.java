@@ -1,7 +1,6 @@
 package duke.memo.command;
 
 import duke.memo.exception.DukeException;
-import duke.memo.exception.NotNumberException;
 import duke.memo.exception.TaskNotExistException;
 import duke.memo.storage.Storage;
 import duke.memo.data.TaskList;
@@ -12,10 +11,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class FindCommand extends Command{
-    private int targetTaskNo;
     private String keyword;
 
-    public FindCommand(String keyword) throws DukeException {
+    public FindCommand(String keyword) {
         this.keyword = keyword;
     }
     @Override

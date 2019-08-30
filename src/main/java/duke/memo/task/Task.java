@@ -1,4 +1,8 @@
-public class Task {
+package duke.task;
+
+import duke.exception.NoDescriptionException;
+
+public abstract class Task {
     protected String description;
     protected boolean isDone;
     private String taskType;
@@ -12,6 +16,11 @@ public class Task {
         this.isDone = false;
     }
 
+    public Task (String taskType) {
+        this.taskType = taskType;
+        this.isDone = false;
+    }
+
     public Task taskDone() {
         this.isDone = true;
         return this;
@@ -21,13 +30,15 @@ public class Task {
         return description;
     }
 
+    public String getTaskType() {
+        return taskType;
+    }
+
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
     }
 
-    public String getPrintableMsg() {
-        return "";
-    }
+    public abstract String getPrintableMsg();
 
     @Override
     public String toString() {

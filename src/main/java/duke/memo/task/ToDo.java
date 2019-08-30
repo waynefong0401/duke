@@ -1,6 +1,6 @@
-package duke.task;
+package duke.memo.task;
 
-import duke.exception.NoDescriptionException;
+import duke.memo.exception.NoDescriptionException;
 
 public class ToDo extends Task {
     private static String TASKTYPE = "todo";

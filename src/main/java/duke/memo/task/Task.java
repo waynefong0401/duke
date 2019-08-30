@@ -1,6 +1,6 @@
-package duke.task;
+package duke.memo.task;
 
-import duke.exception.NoDescriptionException;
+import duke.memo.exception.NoDescriptionException;
 
 public abstract class Task {
     protected String description;

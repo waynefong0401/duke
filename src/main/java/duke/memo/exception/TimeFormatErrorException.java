@@ -1,6 +1,6 @@
 package duke.memo.exception;
 
-public class TimeFormatErrorException extends Exception {
+public class TimeFormatErrorException extends DukeException {
     private String taskType;
 
     public TimeFormatErrorException(String taskType) {
@@ -10,5 +10,10 @@ public class TimeFormatErrorException extends Exception {
 
     public String getTaskType() {
         return taskType;
+    }
+
+    @Override
+    public String getMessage() {
+        return "OOPS!!! The time format of a " + taskType + " cannot be read.";
     }
 }

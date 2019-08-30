@@ -1,8 +1,8 @@
-package duke.memo.command;
+package duke.memo.storage;
 
 import duke.memo.exception.TaskLoadException;
 import duke.memo.task.Task;
-import duke.memo.task.TaskList;
+import duke.memo.data.TaskList;
 
 import java.io.*;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package duke.memo.exception;
 
-public class NoDescriptionException extends Exception{
+public class NoDescriptionException extends DukeException{
     private String taskType;
 
     public NoDescriptionException(String taskType) {
@@ -10,5 +10,10 @@ public class NoDescriptionException extends Exception{
 
     public String getTaskType() {
         return taskType;
+    }
+
+    @Override
+    public String getMessage() {
+        return "OOPS!!! The description of a " + taskType + " cannot be empty.";
     }
 }

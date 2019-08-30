@@ -1,4 +1,4 @@
-package duke.memo.command;
+package duke.memo.ui;
 
 import java.util.Scanner;
 
@@ -24,28 +24,12 @@ public class Ui {
         System.out.println("_______________________________________");
     }
 
-    public void showLoadingError() {
-        System.out.println("OOPS!!! I cannot load the history record.");
-    }
-
     public void showWelcomeMsg() {
         System.out.println(WELCOMEMSG);
     }
 
     public void showByeMsg() {
         System.out.println("Bye. Hope to see you again soon!");
-    }
-
-    public void showDescriptionError(String taskType) {
-        System.out.println("OOPS!!! The description of a " + taskType + " cannot be empty.");
-    }
-
-    public void showTimeError(String taskType) {
-        System.out.println("OOPS!!! The time details of a " + taskType + " cannot be empty.");
-    }
-
-    public void showTimeFormatError(String taskType) {
-        System.out.println("OOPS!!! The time format of a " + taskType + " cannot be read.");
     }
 
     public void showListMsg() {
@@ -65,21 +49,17 @@ public class Ui {
                 + "\nNow you have " + taskNo + " tasks in the list.");
     }
 
-    public void showTaskNotExistError() {
-        System.out.println("OOPS!!! I'm sorry, but there is no such task in the list");
-    }
-
     public void showTaskTypeError() {
         System.out.println("OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
 
-    public void showAddedTask(String[] addedTask) {
+    public void showAddedTask(String addedTask,int taskListLength) {
         System.out.println("Got it. I've added this task: ");
-        System.out.println(addedTask[0]);
-        System.out.println("Now you have " + addedTask[1] + " tasks in the list.");
+        System.out.println(addedTask);
+        System.out.println("Now you have " + taskListLength + " tasks in the list.");
     }
 
-    public void showNotNumberError() {
-        System.out.println("OOPS!!! there is no number entered");
+    public void showError(String errMsg) {
+        System.out.println(errMsg);
     }
 }

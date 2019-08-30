@@ -11,6 +11,13 @@ import duke.memo.command.ListCommand;
 import duke.memo.exception.DukeException;
 
 public class Parser {
+    /**
+     * Static method parse for Parser.
+     * To parse the log into a command.
+     *
+     * @param cmd  Full command in log file.
+     * @throws DukeException Throw if there is a problem in the command.
+     */
     public static Command parse(String cmd) throws DukeException {
         if (cmd.equalsIgnoreCase("bye")) {
             return new ExitCommand();

@@ -1,5 +1,6 @@
 package duke.memo.task;
 
+import duke.memo.exception.DukeException;
 import duke.memo.exception.NoDescriptionException;
 import duke.memo.exception.NoTimeException;
 import duke.memo.exception.TimeFormatErrorException;
@@ -12,7 +13,14 @@ public class Event extends Task {
     private static String TASKTYPE = "event";
     private static SimpleDateFormat DATEFORMAT = new SimpleDateFormat(("dd/MM/yyyy HHmm"));
 
-    public Event(String des) throws NoTimeException, TimeFormatErrorException, NoDescriptionException {
+    /**
+     * Constructor for Event Task.
+     * Throw error if there is no time description or wrong format.
+     *
+     * @param des  Description for the Event Task.
+     * @throws DukeException  If details missing or in wrong format.
+     */
+    public Event(String des) throws DukeException {
         super(TASKTYPE);
         if (des.trim().isBlank()) {
             throw new NoDescriptionException(TASKTYPE);
@@ -28,7 +36,14 @@ public class Event extends Task {
         }
     }
 
-    public Event(String[] taskDetails) throws NoDescriptionException, TimeFormatErrorException {
+    /**
+     * Constructor for Event Task.
+     * Throw error if there is no time description or wrong format.
+     *
+     * @param taskDetails  Details for the Event Task.
+     * @throws DukeException  If details missing or in wrong format.
+     */
+    public Event(String[] taskDetails) throws DukeException {
         super(taskDetails[2],TASKTYPE);
         this.isDone = taskDetails[1].equalsIgnoreCase("1");
         try {

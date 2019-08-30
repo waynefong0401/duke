@@ -1,12 +1,11 @@
 package duke.memo.data;
 
-import duke.memo.exception.NoDescriptionException;
-import duke.memo.exception.NoTimeException;
-import duke.memo.exception.TimeFormatErrorException;
+import duke.memo.exception.DukeException;
 import duke.memo.task.Deadline;
 import duke.memo.task.Event;
 import duke.memo.task.Task;
 import duke.memo.task.ToDo;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -16,8 +15,13 @@ public class TaskList extends ArrayList<Task> {
         super();
     }
 
-    public TaskList(ArrayList<String> taskList) throws NoTimeException,
-            TimeFormatErrorException, NoDescriptionException {
+    /**
+     * Constructor for TaskList.
+     *
+     * @param taskList  list of tasks.
+     * @throws DukeException throw if there is a problem in the command.
+     */
+    public TaskList(ArrayList<String> taskList) throws DukeException {
         super();
         Iterator<String> iter = taskList.iterator();
         while (iter.hasNext()) {
@@ -25,7 +29,13 @@ public class TaskList extends ArrayList<Task> {
         }
     }
 
-    public Task readLog(String log) throws NoDescriptionException, TimeFormatErrorException, NoTimeException {
+    /**
+     * Convert raw log string to a task object.
+     *
+     * @param log  Raw log.
+     * @throws DukeException Throw if there is a problem in the log.
+     */
+    public Task readLog(String log) throws DukeException {
         String[] taskDetails = log.split(" \\| ",4);
         switch (taskDetails[0]) {
         case "T" :

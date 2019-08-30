@@ -1,7 +1,7 @@
-package duke.memo.task;
+package java.duke.memo.task;
 
-//import duke.memo.exception.DukeException;
-import org.junit.jupiter.api.Test;
+import duke.memo.task.Deadline;
+import org.testng.annotations.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 

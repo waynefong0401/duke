@@ -1,5 +1,7 @@
 package duke.memo.storage;
 
+import duke.memo.Duke;
+import duke.memo.exception.DukeException;
 import duke.memo.exception.TaskLoadException;
 import duke.memo.task.Task;
 import duke.memo.data.TaskList;
@@ -14,7 +16,13 @@ import java.util.Iterator;
 public class Storage {
     private FileReader fr;
 
-    public Storage(String filePath) throws TaskLoadException {
+    /**
+     * Constructor for Storage.
+     *
+     * @param filePath  Path to the log file.
+     * @throws DukeException File unable to load.
+     */
+    public Storage(String filePath) throws DukeException {
         try {
             System.out.println(System.getProperty("user.dir") + "/" + filePath);
             this.fr = new FileReader(System.getProperty("user.dir") + "/" + filePath);
@@ -23,6 +31,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Store file to local.
+     *
+     * @param taskList List of tasks.
+     */
     public void store(TaskList taskList) {
         String filePath = System.getProperty("user.dir") + "/data/duke.txt";
 
@@ -39,6 +52,11 @@ public class Storage {
 
     }
 
+    /**
+     * Load file to local.
+     *
+     * @throws IOException  File does not exist.
+     */
     public ArrayList<String> load() throws IOException {
         BufferedReader br = new BufferedReader(fr);
         ArrayList<String> lineList = new ArrayList<String>();

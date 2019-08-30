@@ -53,6 +53,12 @@ public class Ui {
                 + "\nNow you have " + taskNo + " tasks in the list.");
     }
 
+    /**
+     * Display the added task.
+     *
+     * @param addedTask  Details of the added task.
+     * @param taskListLength  Length of the task list.
+     */
     public void showAddedTask(String addedTask,int taskListLength) {
         System.out.println("Got it. I've added this task: ");
         System.out.println(addedTask);
@@ -63,6 +69,11 @@ public class Ui {
         System.out.println(errMsg);
     }
 
+    /**
+     * Display the matched task.
+     *
+     * @param resultTasks  Details of the matched task.
+     */
     public void showResult(ArrayList<Task> resultTasks) {
         System.out.println("Here are the matching tasks in your list:");
         Iterator<Task> iter = resultTasks.iterator();

@@ -18,6 +18,12 @@ public class Duke {
         new Duke("data/duke.txt").run();
     }
 
+    /**
+     * Constructor for Duke.
+     * Throw error if input/output goes wrong.
+     *
+     * @param filePath  Path to the log file.
+     */
     public Duke(String filePath) {
 
         try {
@@ -33,6 +39,9 @@ public class Duke {
         }
     }
 
+    /**
+     * Run the program body.
+     */
     public void run() {
         ui.showWelcomeMsg();
         boolean isExit = false;

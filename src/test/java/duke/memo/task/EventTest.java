@@ -1,6 +1,6 @@
-package duke.memo.task;
+package java.duke.memo.task;
 
-//import duke.memo.exception.DukeException;
+import duke.memo.task.Event;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

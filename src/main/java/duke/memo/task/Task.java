@@ -1,5 +1,6 @@
 package duke.memo.task;
 
+import duke.memo.exception.DukeException;
 import duke.memo.exception.NoDescriptionException;
 
 public abstract class Task {
@@ -7,7 +8,15 @@ public abstract class Task {
     protected boolean isDone;
     private String taskType;
 
-    public Task(String description,String taskType) throws NoDescriptionException {
+    /**
+     * Constructor for Task.
+     * Throw error if there is no time description or wrong format.
+     *
+     * @param description  Description for the Task.
+     * @param taskType  Task type for the Task.
+     * @throws DukeException  If details missing or in wrong format.
+     */
+    public Task(String description,String taskType) throws DukeException {
         this.taskType = taskType;
 
         if (description.isBlank()) {
@@ -31,10 +40,6 @@ public abstract class Task {
 
     public String getDescription() {
         return description;
-    }
-
-    public String getTaskType() {
-        return taskType;
     }
 
     public String getStatusIcon() {

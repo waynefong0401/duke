@@ -1,6 +1,6 @@
-package duke.memo.task;
+package java.duke.memo.task;
 
-//import duke.memo.exception.NoDescriptionException;
+import duke.memo.task.ToDo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

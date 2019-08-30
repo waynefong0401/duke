@@ -10,6 +10,13 @@ import duke.memo.ui.Ui;
 public class DoneCommand extends Command {
     private int targetTaskNo;
 
+    /**
+     * Constructor for DoneCommand.
+     * Throw error if no task index no enter or in wrong format.
+     *
+     * @param targetTaskNo  The target task index no.
+     * @throws DukeException  If the input cannot be format to number.
+     */
     public DoneCommand(String targetTaskNo) throws DukeException {
         try {
             this.targetTaskNo = Integer.parseInt(targetTaskNo) - 1;

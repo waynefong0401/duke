@@ -6,7 +6,7 @@ public class ToDo extends Task {
     private static String TASKTYPE = "todo";
     
     public ToDo(String des) throws NoDescriptionException {
-            super(des,TASKTYPE);
+        super(des,TASKTYPE);
     }
 
     public ToDo(String[] taskDetails) throws NoDescriptionException {

@@ -1,6 +1,13 @@
 package duke.memo.parser;
 
-import duke.memo.command.*;
+import duke.memo.command.AddCommand;
+import duke.memo.command.Command;
+import duke.memo.command.DeleteCommand;
+import duke.memo.command.DoneCommand;
+import duke.memo.command.ErrorCommand;
+import duke.memo.command.ExitCommand;
+import duke.memo.command.FindCommand;
+import duke.memo.command.ListCommand;
 import duke.memo.exception.DukeException;
 
 public class Parser {
@@ -21,7 +28,7 @@ public class Parser {
             } else {
                 return new ErrorCommand();
             }
-        } else if (cmd.startsWith("delete")){
+        } else if (cmd.startsWith("delete")) {
             if (cmd.split(" ",2)[0].equalsIgnoreCase("delete")) {
                 return new DeleteCommand(cmd.substring(6).trim());
             } else {

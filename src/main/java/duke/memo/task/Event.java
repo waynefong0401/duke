@@ -14,7 +14,9 @@ public class Event extends Task {
 
     public Event(String des) throws NoTimeException, TimeFormatErrorException, NoDescriptionException {
         super(TASKTYPE);
-        if (des.trim().isBlank()) throw new NoDescriptionException(TASKTYPE);
+        if (des.trim().isBlank()) {
+            throw new NoDescriptionException(TASKTYPE);
+        }
         try {
             String[] details = des.split("/", 2);
             description = details[0];
@@ -29,11 +31,9 @@ public class Event extends Task {
     public Event(String[] taskDetails) throws NoDescriptionException, TimeFormatErrorException {
         super(taskDetails[2],TASKTYPE);
         this.isDone = taskDetails[1].equalsIgnoreCase("1");
-        try
-        {
+        try {
             this.at = DATEFORMAT.parse(taskDetails[3]);
-        } catch (ParseException e)
-        {
+        } catch (ParseException e) {
             throw new TimeFormatErrorException(TASKTYPE);
         }
     }

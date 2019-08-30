@@ -37,7 +37,7 @@ public class AddCommand extends Command {
                 throw new TaskTypeError();
             }
             taskList.add(curTask);
-            ui.showAddedTask(curTask.toString(),taskList.size());
+            ui.showAddedTask(curTask.toString(), taskList.size());
         } catch (DukeException e) {
             throw e;
         } catch (IndexOutOfBoundsException e) {

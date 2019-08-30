@@ -16,7 +16,8 @@ public class TaskList extends ArrayList<Task> {
         super();
     }
 
-    public TaskList(ArrayList<String> taskList) throws NoTimeException, TimeFormatErrorException, NoDescriptionException {
+    public TaskList(ArrayList<String> taskList) throws NoTimeException,
+            TimeFormatErrorException, NoDescriptionException {
         super();
         Iterator<String> iter = taskList.iterator();
         while (iter.hasNext()) {
@@ -33,6 +34,8 @@ public class TaskList extends ArrayList<Task> {
             return new Event(taskDetails);
         case "D" :
             return new Deadline(taskDetails);
+        default :
+            break;
         }
         return null;
     }

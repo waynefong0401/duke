@@ -8,7 +8,7 @@ import duke.memo.data.TaskList;
 import duke.memo.task.Task;
 import duke.memo.ui.Ui;
 
-public class DeleteCommand extends Command{
+public class DeleteCommand extends Command {
     private int targetTaskNo;
 
     public DeleteCommand(String targetTaskNo) throws DukeException {
@@ -18,6 +18,7 @@ public class DeleteCommand extends Command{
             throw new NotNumberException();
         }
     }
+
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
         try {

@@ -9,12 +9,14 @@ import java.util.Date;
 
 public class Deadline extends Task {
     protected Date by;
-    private static String TASKTYPE= "event";
+    private static String TASKTYPE = "event";
     private static SimpleDateFormat DATEFORMAT = new SimpleDateFormat(("dd/MM/yyyy HHmm"));
 
     public Deadline(String des) throws NoTimeException, TimeFormatErrorException, NoDescriptionException {
         super(TASKTYPE);
-        if (des.trim().isBlank()) throw new NoDescriptionException(TASKTYPE);
+        if (des.trim().isBlank()) {
+            throw new NoDescriptionException(TASKTYPE);
+        }
         try {
             String[] details = des.split("/", 2);
             description = details[0];
@@ -29,11 +31,9 @@ public class Deadline extends Task {
     public Deadline(String[] taskDetails) throws NoDescriptionException, TimeFormatErrorException {
         super(taskDetails[2],TASKTYPE);
         this.isDone = taskDetails[1].equalsIgnoreCase("1");
-        try
-        {
+        try {
             this.by = DATEFORMAT.parse(taskDetails[3]);
-        } catch (ParseException e)
-        {
+        } catch (ParseException e) {
             throw new TimeFormatErrorException(TASKTYPE);
         }
     }

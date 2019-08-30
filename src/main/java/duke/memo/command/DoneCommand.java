@@ -17,8 +17,9 @@ public class DoneCommand extends Command {
             throw new NotNumberException();
         }
     }
+
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException{
+    public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
         try {
             ui.showDoneMsg(taskList.get(targetTaskNo).taskDone().toString());
             storage.store(taskList);

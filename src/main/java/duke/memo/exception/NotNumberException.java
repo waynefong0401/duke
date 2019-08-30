@@ -1,6 +1,6 @@
 package duke.memo.exception;
 
-public class NotNumberException extends DukeException{
+public class NotNumberException extends DukeException {
 
     public NotNumberException() {
         super();

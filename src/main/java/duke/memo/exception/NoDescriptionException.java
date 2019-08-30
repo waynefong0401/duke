@@ -1,6 +1,6 @@
 package duke.memo.exception;
 
-public class NoDescriptionException extends DukeException{
+public class NoDescriptionException extends DukeException {
     private String taskType;
 
     public NoDescriptionException(String taskType) {

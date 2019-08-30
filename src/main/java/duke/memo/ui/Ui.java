@@ -1,5 +1,9 @@
 package duke.memo.ui;
 
+import duke.memo.task.Task;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Ui {
@@ -57,5 +61,14 @@ public class Ui {
 
     public void showError(String errMsg) {
         System.out.println(errMsg);
+    }
+
+    public void showResult(ArrayList<Task> resultTasks) {
+        System.out.println("Here are the matching tasks in your list:");
+        Iterator<Task> iter = resultTasks.iterator();
+        int i = 1;
+        while (iter.hasNext()) {
+            System.out.println(i + "." + iter.next());
+        }
     }
 }

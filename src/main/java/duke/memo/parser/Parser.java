@@ -9,6 +9,12 @@ public class Parser {
             return new ExitCommand();
         } else if (cmd.equalsIgnoreCase("list")) {
             return new ListCommand();
+        } else if (cmd.startsWith("find")) {
+            if (cmd.split(" ",2)[0].equalsIgnoreCase("find")) {
+                return new FindCommand(cmd.substring(5));
+            } else {
+                return new ErrorCommand();
+            }
         } else if (cmd.startsWith("done")) {
             if (cmd.split(" ",2)[0].equalsIgnoreCase("done")) {
                 return new DoneCommand(cmd.substring(4).trim());

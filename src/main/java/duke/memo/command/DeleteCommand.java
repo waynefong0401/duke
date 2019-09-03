@@ -30,7 +30,7 @@ public class DeleteCommand extends Command {
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
         try {
             Task deletedTask = taskList.remove(targetTaskNo);
-            ui.showDeleteMsg(deletedTask.toString(),taskList.size());
+            ui.showDeleteMsg(deletedTask.toString(), taskList.size());
             storage.store(taskList);
         } catch (IndexOutOfBoundsException e) {
             throw new TaskNotExistException();

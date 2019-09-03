@@ -12,6 +12,7 @@ import duke.memo.task.ToDo;
 import duke.memo.ui.Ui;
 
 public class AddCommand extends Command {
+
     private String cmd;
 
     public AddCommand(String cmd) {
@@ -21,6 +22,7 @@ public class AddCommand extends Command {
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
         String[] curTaskDetails = cmd.split(" ", 2);
+
         try {
             Task curTask;
             switch (curTaskDetails[0]) {

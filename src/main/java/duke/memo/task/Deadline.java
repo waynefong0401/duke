@@ -11,22 +11,22 @@ import java.util.Date;
 public class Deadline extends Task {
     protected Date by;
     private static String TASKTYPE = "event";
-    private static SimpleDateFormat DATEFORMAT = new SimpleDateFormat(("dd/MM/yyyy HHmm"));
+    private static SimpleDateFormat DATEFORMAT = new SimpleDateFormat("dd/MM/yyyy HHmm");
 
     /**
      * Constructor for Deadline Task.
      * Throw error if there is no time description or wrong format.
      *
-     * @param des  Description for the Deadline Task.
+     * @param desc  Description for the Deadline Task.
      * @throws DukeException  If details missing or in wrong format.
      */
-    public Deadline(String des) throws DukeException {
+    public Deadline(String desc) throws DukeException {
         super(TASKTYPE);
-        if (des.trim().isBlank()) {
+        if (desc.trim().isBlank()) {
             throw new NoDescriptionException(TASKTYPE);
         }
         try {
-            String[] details = des.split("/", 2);
+            String[] details = desc.split("/", 2);
             description = details[0];
             by = DATEFORMAT.parse(details[1]);
         } catch (ParseException e) {
@@ -44,10 +44,10 @@ public class Deadline extends Task {
      * @throws DukeException  If details missing or in wrong format.
      */
     public Deadline(String[] taskDetails) throws DukeException {
-        super(taskDetails[2],TASKTYPE);
-        this.isDone = taskDetails[1].equalsIgnoreCase("1");
+        super(taskDetails[2], TASKTYPE);
+        isDone = taskDetails[1].equalsIgnoreCase("1");
         try {
-            this.by = DATEFORMAT.parse(taskDetails[3]);
+            by = DATEFORMAT.parse(taskDetails[3]);
         } catch (ParseException e) {
             throw new TimeFormatErrorException(TASKTYPE);
         }

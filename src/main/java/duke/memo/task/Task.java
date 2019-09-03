@@ -12,29 +12,29 @@ public abstract class Task {
      * Constructor for Task.
      * Throw error if there is no time description or wrong format.
      *
-     * @param description  Description for the Task.
+     * @param desc  Description for the Task.
      * @param taskType  Task type for the Task.
      * @throws DukeException  If details missing or in wrong format.
      */
-    public Task(String description,String taskType) throws DukeException {
+    public Task(String desc,String taskType) throws DukeException {
         this.taskType = taskType;
 
-        if (description.isBlank()) {
+        if (desc.isBlank()) {
             throw new NoDescriptionException(taskType);
         } else {
-            this.description = description;
+            description = desc;
         }
 
-        this.isDone = false;
+        isDone = false;
     }
 
     public Task(String taskType) {
         this.taskType = taskType;
-        this.isDone = false;
+        isDone = false;
     }
 
     public Task taskDone() {
-        this.isDone = true;
+        isDone = true;
         return this;
     }
 

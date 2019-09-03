@@ -25,7 +25,7 @@ public class Storage {
     public Storage(String filePath) throws DukeException {
         try {
             System.out.println(System.getProperty("user.dir") + "/" + filePath);
-            this.fr = new FileReader(System.getProperty("user.dir") + "/" + filePath);
+            fr = new FileReader(System.getProperty("user.dir") + "/" + filePath);
         } catch (FileNotFoundException e) {
             throw new TaskLoadException();
         }
@@ -59,7 +59,7 @@ public class Storage {
      */
     public ArrayList<String> load() throws IOException {
         BufferedReader br = new BufferedReader(fr);
-        ArrayList<String> lineList = new ArrayList<String>();
+        ArrayList<String> lineList = new ArrayList<String>();   //Initialize an ArrayList<String> to store the records loaded from log
         String line;
         while ((line = br.readLine()) != null) {
             lineList.add(line);

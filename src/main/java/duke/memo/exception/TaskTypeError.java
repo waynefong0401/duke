@@ -1,6 +1,7 @@
 package duke.memo.exception;
 
 public class TaskTypeError extends DukeException {
+
     public TaskTypeError() {
         super();
     }

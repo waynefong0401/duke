@@ -1,6 +1,7 @@
 package duke.memo.exception;
 
 public class NoTimeException extends DukeException {
+
     private String taskType;
 
     public NoTimeException(String taskType) {

@@ -9,11 +9,11 @@ public class ToDo extends Task {
      * Constructor for ToDo Task.
      * Throw error if there is no description.
      *
-     * @param des  Description for the ToDo Task.
+     * @param desc  Description for the ToDo Task.
      * @throws DukeException  If detail is missing.
      */
-    public ToDo(String des) throws DukeException {
-        super(des,TASKTYPE);
+    public ToDo(String desc) throws DukeException {
+        super(desc,TASKTYPE);
     }
 
     /**
@@ -25,7 +25,7 @@ public class ToDo extends Task {
      */
     public ToDo(String[] taskDetails) throws DukeException {
         super(taskDetails[2],TASKTYPE);
-        this.isDone = taskDetails[1].equalsIgnoreCase("1");
+        isDone = taskDetails[1].equalsIgnoreCase("1");
     }
 
     @Override

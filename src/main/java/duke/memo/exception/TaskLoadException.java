@@ -1,6 +1,7 @@
 package duke.memo.exception;
 
 public class TaskLoadException extends DukeException {
+
     public TaskLoadException() {
         super();
     }

@@ -1,18 +1,16 @@
-package java.duke.memo.task;
+package duke.memo.task;
 
-import duke.memo.task.ToDo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ToDoTest {
 
     @Test
     void todoTest() throws Throwable {
         ToDo todo = new ToDo("read book");
-        assertEquals("[T]\u2718 read book", todo.toString());
+        Assertions.assertEquals("[T]✘ read book", todo.toString());
         todo.taskDone();
-        assertEquals("[T]\u2713 read book", todo.toString());
+        Assertions.assertEquals("[T]✓ read book", todo.toString());
     }
 
 

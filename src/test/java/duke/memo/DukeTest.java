@@ -1,6 +1,6 @@
-import org.junit.jupiter.api.Test;
+package duke.memo;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class DukeTest {
 

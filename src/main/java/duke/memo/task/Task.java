@@ -6,7 +6,6 @@ import duke.memo.exception.NoDescriptionException;
 public abstract class Task {
     protected String description;
     protected boolean isDone;
-    private String taskType;
 
     /**
      * Constructor for Task.
@@ -17,8 +16,6 @@ public abstract class Task {
      * @throws DukeException  If details missing or in wrong format.
      */
     public Task(String desc,String taskType) throws DukeException {
-        this.taskType = taskType;
-
         if (desc.isBlank()) {
             throw new NoDescriptionException(taskType);
         } else {
@@ -28,8 +25,7 @@ public abstract class Task {
         isDone = false;
     }
 
-    public Task(String taskType) {
-        this.taskType = taskType;
+    public Task() {
         isDone = false;
     }
 

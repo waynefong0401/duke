@@ -1,12 +1,10 @@
 package duke.memo.storage;
 
-import duke.memo.Duke;
-import duke.memo.exception.DukeException;
-import duke.memo.exception.TaskLoadException;
 import duke.memo.task.Task;
 import duke.memo.data.TaskList;
+
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,20 +13,23 @@ import java.util.Iterator;
 
 public class Storage {
     private FileReader fr;
+    private String filePath;
 
     /**
      * Constructor for Storage.
      *
      * @param filePath  Path to the log file.
-     * @throws DukeException File unable to load.
+     * @throws IOException Unpredicted I/O exception.
      */
-    public Storage(String filePath) throws DukeException {
-        try {
-            System.out.println(System.getProperty("user.dir") + "/" + filePath);
-            fr = new FileReader(System.getProperty("user.dir") + "/" + filePath);
-        } catch (FileNotFoundException e) {
-            throw new TaskLoadException();
+    public Storage(String filePath) throws IOException {
+        this.filePath = System.getProperty("user.dir") + "/" + filePath;
+        File file = new File(this.filePath);
+        if (file.createNewFile()) {
+            System.out.println("File has been created.");
+        } else {
+            System.out.println("File already exists.");
         }
+        fr = new FileReader(file);
     }
 
     /**
@@ -55,11 +56,12 @@ public class Storage {
     /**
      * Load file to local.
      *
+     * @return arraylist of string contains lines of log
      * @throws IOException  File does not exist.
      */
     public ArrayList<String> load() throws IOException {
         BufferedReader br = new BufferedReader(fr);
-        ArrayList<String> lineList = new ArrayList<String>();   //Store the records loaded from log
+        ArrayList<String> lineList = new ArrayList<>();   //Store the records loaded from log
         String line;
         while ((line = br.readLine()) != null) {
             lineList.add(line);

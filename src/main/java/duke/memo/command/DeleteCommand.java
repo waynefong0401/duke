@@ -6,7 +6,7 @@ import duke.memo.exception.TaskNotExistException;
 import duke.memo.storage.Storage;
 import duke.memo.data.TaskList;
 import duke.memo.task.Task;
-import duke.memo.ui.Ui;
+import duke.memo.message.MessageGenerator;
 
 public class DeleteCommand extends Command {
     private int targetTaskNo;
@@ -27,11 +27,12 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
+    public String execute(TaskList taskList, MessageGenerator msgGenerator, Storage storage) throws DukeException {
         try {
             Task deletedTask = taskList.remove(targetTaskNo);
-            ui.showDeleteMsg(deletedTask.toString(), taskList.size());
+
             storage.store(taskList);
+            return msgGenerator.generateDeletedTaskMsg(deletedTask.toString(), taskList.size());
         } catch (IndexOutOfBoundsException e) {
             throw new TaskNotExistException();
         }

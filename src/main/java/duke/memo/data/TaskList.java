@@ -33,6 +33,7 @@ public class TaskList extends ArrayList<Task> {
      * Convert raw log string to a task object.
      *
      * @param log  Raw log.
+     * @return Task return the parsed log
      * @throws DukeException Throw if there is a problem in the log.
      */
     public Task readLog(String log) throws DukeException {

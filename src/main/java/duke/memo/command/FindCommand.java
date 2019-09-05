@@ -5,7 +5,8 @@ import duke.memo.exception.TaskNotExistException;
 import duke.memo.storage.Storage;
 import duke.memo.data.TaskList;
 import duke.memo.task.Task;
-import duke.memo.ui.Ui;
+import duke.memo.message.MessageGenerator;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -17,7 +18,7 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
+    public String execute(TaskList taskList, MessageGenerator msgGenerator, Storage storage) throws DukeException {
         ArrayList<Task> resultTasks = new ArrayList<>(); //ArrayList to store the task that contain the keyword
         try {
             Iterator<Task> iter = taskList.iterator();
@@ -27,7 +28,7 @@ public class FindCommand extends Command {
                     resultTasks.add(curTask);
                 }
             }
-            ui.showResult(resultTasks);
+            return msgGenerator.generateResultTaskMsg(resultTasks);
         } catch (IndexOutOfBoundsException e) {
             throw new TaskNotExistException();
         }

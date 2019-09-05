@@ -4,6 +4,7 @@ import duke.memo.exception.DukeException;
 import duke.memo.exception.NoDescriptionException;
 import duke.memo.exception.NoTimeException;
 import duke.memo.exception.TimeFormatErrorException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,7 +22,7 @@ public class Deadline extends Task {
      * @throws DukeException  If details missing or in wrong format.
      */
     public Deadline(String desc) throws DukeException {
-        super(TASKTYPE);
+        super();
         if (desc.trim().isBlank()) {
             throw new NoDescriptionException(TASKTYPE);
         }

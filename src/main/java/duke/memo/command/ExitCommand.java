@@ -2,13 +2,12 @@ package duke.memo.command;
 
 import duke.memo.storage.Storage;
 import duke.memo.data.TaskList;
-import duke.memo.ui.Ui;
+import duke.memo.message.MessageGenerator;
 
 public class ExitCommand extends Command {
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) {
-        ui.showByeMsg();
-        System.exit(0);
+    public String  execute(TaskList taskList, MessageGenerator msgGenerator, Storage storage) {
+        return msgGenerator.generateByeMsg();
     }
 
     @Override

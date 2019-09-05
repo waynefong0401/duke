@@ -16,6 +16,7 @@ public class Parser {
      * To parse the log into a command.
      *
      * @param cmd  Full command in log file.
+     * @return parsed command
      * @throws DukeException Throw if there is a problem in the command.
      */
     public static Command parse(String cmd) throws DukeException {

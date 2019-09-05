@@ -4,12 +4,12 @@ import duke.memo.data.TaskList;
 import duke.memo.exception.DukeException;
 import duke.memo.exception.TaskTypeError;
 import duke.memo.storage.Storage;
-import duke.memo.ui.Ui;
+import duke.memo.message.MessageGenerator;
 
 public class ErrorCommand extends Command {
 
     @Override
-    public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
+    public String execute(TaskList taskList, MessageGenerator msgGenerator, Storage storage) throws DukeException {
         throw new TaskTypeError();
     }
 }

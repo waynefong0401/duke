@@ -5,17 +5,32 @@ import duke.memo.data.TaskList;
 import duke.memo.exception.DukeException;
 import duke.memo.parser.Parser;
 import duke.memo.storage.Storage;
-import duke.memo.ui.Ui;
+import duke.memo.message.MessageGenerator;
+
 import java.io.IOException;
 
 public class Duke {
 
     private Storage storage;
     private TaskList taskList;
-    private Ui ui;
+    private MessageGenerator msgGenerator;
 
-    public static void main(String[] args) {
-        new Duke("data/duke.txt").run();
+    /**
+     * Constructor for Duke.
+     * Throw error if input/output goes wrong.
+     */
+    public Duke() {
+        try {
+            msgGenerator = new MessageGenerator();
+            storage = new Storage("data/duke.txt");
+
+            taskList = new TaskList(storage.load());
+        } catch (DukeException e) {
+            msgGenerator.generateErrorMsg(e.getMessage());
+            taskList = new TaskList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -27,12 +42,12 @@ public class Duke {
     public Duke(String filePath) {
 
         try {
-            ui = new Ui();
+            msgGenerator = new MessageGenerator();
             storage = new Storage(filePath);
 
             taskList = new TaskList(storage.load());
         } catch (DukeException e) {
-            ui.showError(e.getMessage());
+            msgGenerator.generateErrorMsg(e.getMessage());
             taskList = new TaskList();
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,23 +55,17 @@ public class Duke {
     }
 
     /**
-     * Run the program body.
+     * Get response for input.
+     * @param input input from GUI.
+     * @return return the result as a string
      */
-    public void run() {
-        ui.showWelcomeMsg();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String fullCommand = ui.readNextLine();
-                ui.showLine(); // show the divider line ("_______")
-                Command c = Parser.parse(fullCommand);
-                c.execute(taskList, ui, storage);
-                isExit = c.isExit();
-            } catch (DukeException e) {
-                ui.showError(e.getMessage());
-            } finally {
-                ui.showLine();
-            }
+    public String getResponse(String input)  {
+        Command c;
+        try {
+            c = Parser.parse(input);
+            return c.execute(taskList, msgGenerator,storage);
+        } catch (DukeException e) {
+            return e.getMessage();
         }
     }
 }

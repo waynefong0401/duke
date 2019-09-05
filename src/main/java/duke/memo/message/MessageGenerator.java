@@ -27,10 +27,10 @@ public class MessageGenerator {
         if (taskNum == 0) {
             return "There is no task in your list.";
         } else if (taskNum == 1) {
-            msg = "There is 1 tasks in your list:\n" + taskList.get(0).toString();
+            msg = String.format("There is 1 tasks in your list:\n%s", taskList.get(0).toString());
         } else {
             int curIndex = 1;
-            msg = "There are " + taskList.size() + " tasks in your list:";
+            msg = String.format("There are %d tasks in your list:",taskList.size());
             for (Task task : taskList) {
                 msg += "\n" + curIndex++ + "." + task.toString();
             }
@@ -55,8 +55,8 @@ public class MessageGenerator {
      * @return String This returns the details of the added task.
      */
     public String generateAddedTaskMsg(String addedTask, int taskListLength) {
-        return "Got it. I've added this task: \n"
-        + addedTask + "\n" + "Now you have " + taskListLength + " tasks in the list.";
+        return String.format("Got it. I've added this task: \n%s\nNow you have %d tasks in the list.",
+                addedTask, taskListLength);
     }
 
     public String generateErrorMsg(String errMsg) {

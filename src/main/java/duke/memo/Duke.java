@@ -3,7 +3,7 @@ package duke.memo;
 import duke.memo.command.Command;
 import duke.memo.data.TaskList;
 import duke.memo.exception.DukeException;
-import duke.memo.parser.Parser;
+import duke.memo.parser.InputParser;
 import duke.memo.storage.Storage;
 import duke.memo.message.MessageGenerator;
 
@@ -40,7 +40,7 @@ public class Duke {
     public String getResponse(String input)  {
         Command c;
         try {
-            c = Parser.parse(input);
+            c = InputParser.parse(input);
             return c.execute(taskList, msgGenerator,storage);
         } catch (DukeException e) {
             return e.getMessage();

@@ -12,7 +12,6 @@ import duke.memo.task.ToDo;
 import duke.memo.message.MessageGenerator;
 
 public class AddCommand extends Command {
-
     private String cmd;
 
     public AddCommand(String cmd) {

@@ -3,7 +3,7 @@ package duke.memo.task;
 import duke.memo.exception.DukeException;
 
 public class ToDo extends Task {
-    private static String TASKTYPE = "todo";
+    private static String TASK_TYPE = "todo";
 
     /**
      * Constructor for ToDo Task.
@@ -13,7 +13,7 @@ public class ToDo extends Task {
      * @throws DukeException  If detail is missing.
      */
     public ToDo(String desc) throws DukeException {
-        super(desc,TASKTYPE);
+        super(desc, TASK_TYPE);
     }
 
     /**
@@ -24,7 +24,7 @@ public class ToDo extends Task {
      * @throws DukeException  If detail is missing.
      */
     public ToDo(String[] taskDetails) throws DukeException {
-        super(taskDetails[2],TASKTYPE);
+        super(taskDetails[2], TASK_TYPE);
         isDone = taskDetails[1].equalsIgnoreCase("1");
     }
 

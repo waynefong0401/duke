@@ -29,7 +29,7 @@ public class MessageGenerator {
             msg = String.format("There is 1 tasks in your list:\n%s", taskList.get(0).toString());
         } else {
             int curIndex = 1;
-            msg = String.format("There are %d tasks in your list:",taskList.size());
+            msg = String.format("There are %d tasks in your list:", taskList.size());
             for (Task task : taskList) {
                 msg += "\n" + curIndex++ + "." + task.toString();
             }

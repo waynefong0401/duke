@@ -1,7 +1,6 @@
 package duke.memo.exception;
 
 public class TimeFormatErrorException extends DukeException {
-
     private String taskType;
 
     public TimeFormatErrorException(String taskType) {

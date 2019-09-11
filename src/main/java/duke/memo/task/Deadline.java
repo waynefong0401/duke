@@ -11,8 +11,8 @@ import java.util.Date;
 
 public class Deadline extends Task {
     private Date by;
-    private static String TASKTYPE = "event";
-    private static SimpleDateFormat DATEFORMAT = new SimpleDateFormat("dd/MM/yyyy HHmm");
+    private static String TASK_TYPE = "event";
+    private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HHmm");
 
     /**
      * Constructor for Deadline Task.
@@ -24,16 +24,16 @@ public class Deadline extends Task {
     public Deadline(String desc) throws DukeException {
         super();
         if (desc.trim().isBlank()) {
-            throw new NoDescriptionException(TASKTYPE);
+            throw new NoDescriptionException(TASK_TYPE);
         }
         try {
             String[] details = desc.split("/", 2);
             description = details[0];
-            by = DATEFORMAT.parse(details[1]);
+            by = DATE_FORMAT.parse(details[1]);
         } catch (ParseException e) {
-            throw new TimeFormatErrorException(TASKTYPE);
+            throw new TimeFormatErrorException(TASK_TYPE);
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new NoTimeException(TASKTYPE);
+            throw new NoTimeException(TASK_TYPE);
         }
     }
 
@@ -45,22 +45,22 @@ public class Deadline extends Task {
      * @throws DukeException  If details missing or in wrong format.
      */
     public Deadline(String[] taskDetails) throws DukeException {
-        super(taskDetails[2], TASKTYPE);
+        super(taskDetails[2], TASK_TYPE);
         isDone = taskDetails[1].equalsIgnoreCase("1");
         try {
-            by = DATEFORMAT.parse(taskDetails[3]);
+            by = DATE_FORMAT.parse(taskDetails[3]);
         } catch (ParseException e) {
-            throw new TimeFormatErrorException(TASKTYPE);
+            throw new TimeFormatErrorException(TASK_TYPE);
         }
     }
 
     @Override
     public String getPrintableMsg() {
-        return "D" + " | " + (isDone ? "1" : "0") + " | " + description + " | " + DATEFORMAT.format(by);
+        return "D" + " | " + (isDone ? "1" : "0") + " | " + description + " | " + DATE_FORMAT.format(by);
     }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + DATEFORMAT.format(by) + ")";
+        return "[D]" + super.toString() + " (by: " + DATE_FORMAT.format(by) + ")";
     }
 }

@@ -23,28 +23,6 @@ public class Duke {
         try {
             msgGenerator = new MessageGenerator();
             storage = new Storage("data/duke.txt");
-
-            taskList = new TaskList(storage.load());
-        } catch (DukeException e) {
-            msgGenerator.generateErrorMsg(e.getMessage());
-            taskList = new TaskList();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Constructor for Duke.
-     * Throw error if input/output goes wrong.
-     *
-     * @param filePath  Path to the log file.
-     */
-    public Duke(String filePath) {
-
-        try {
-            msgGenerator = new MessageGenerator();
-            storage = new Storage(filePath);
-
             taskList = new TaskList(storage.load());
         } catch (DukeException e) {
             msgGenerator.generateErrorMsg(e.getMessage());

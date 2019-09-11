@@ -4,7 +4,6 @@ import duke.memo.data.TaskList;
 import duke.memo.task.Task;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class MessageGenerator {
 
@@ -25,7 +24,7 @@ public class MessageGenerator {
         int taskNum = taskList.size();
         String msg;
         if (taskNum == 0) {
-            return "There is no task in your list.";
+            msg = "There is no task in your list.";
         } else if (taskNum == 1) {
             msg = String.format("There is 1 tasks in your list:\n%s", taskList.get(0).toString());
         } else {
@@ -71,9 +70,8 @@ public class MessageGenerator {
      */
     public String generateResultTaskMsg(ArrayList<Task> resultTasks) {
         String msg = "Here are the matching tasks in your list:";
-        Iterator<Task> iter = resultTasks.iterator();
-        while (iter.hasNext()) {
-            msg += "\n" + iter.next().toString();
+        for (Task task : resultTasks) {
+            msg += "\n" + task.toString();
         }
         return  msg;
     }

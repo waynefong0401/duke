@@ -48,6 +48,7 @@ public class TaskList extends ArrayList<Task> {
         default :
             break;
         }
+        assert false : "Log reading error.";
         return null;
     }
 }

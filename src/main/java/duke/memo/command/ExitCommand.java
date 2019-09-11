@@ -10,8 +10,4 @@ public class ExitCommand extends Command {
         return msgGenerator.generateByeMsg();
     }
 
-    @Override
-    public boolean isExit() {
-        return true;
-    }
 }

@@ -30,7 +30,6 @@ public class DeleteCommand extends Command {
     public String execute(TaskList taskList, MessageGenerator msgGenerator, Storage storage) throws DukeException {
         try {
             Task deletedTask = taskList.remove(targetTaskNo);
-
             storage.store(taskList);
             return msgGenerator.generateDeletedTaskMsg(deletedTask.toString(), taskList.size());
         } catch (IndexOutOfBoundsException e) {

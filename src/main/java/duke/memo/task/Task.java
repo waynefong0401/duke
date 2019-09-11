@@ -21,7 +21,6 @@ public abstract class Task {
         } else {
             description = desc;
         }
-
         isDone = false;
     }
 

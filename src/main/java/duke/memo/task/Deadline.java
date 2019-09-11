@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Deadline extends Task {
-    protected Date by;
+    private Date by;
     private static String TASKTYPE = "event";
     private static SimpleDateFormat DATEFORMAT = new SimpleDateFormat("dd/MM/yyyy HHmm");
 

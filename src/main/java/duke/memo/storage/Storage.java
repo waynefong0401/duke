@@ -39,7 +39,6 @@ public class Storage {
      */
     public void store(TaskList taskList) {
         String filePath = System.getProperty("user.dir") + "/data/duke.txt";
-
         try {
             FileWriter fw = new FileWriter(filePath);
             Iterator<Task> iter = taskList.iterator();

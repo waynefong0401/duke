@@ -3,7 +3,9 @@ package duke.memo.message;
 import duke.memo.data.TaskList;
 import duke.memo.task.Task;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class MessageGenerator {
 
@@ -28,11 +30,11 @@ public class MessageGenerator {
         } else if (taskNum == 1) {
             msg = String.format("There is 1 tasks in your list:\n%s", taskList.get(0).toString());
         } else {
-            int curIndex = 1;
+            AtomicInteger index = new AtomicInteger();
             msg = String.format("There are %d tasks in your list:", taskList.size());
-            for (Task task : taskList) {
-                msg += "\n" + curIndex++ + "." + task.toString();
-            }
+            msg += taskList.stream()
+                    .map(t -> String.format("\n%d.%s", index.incrementAndGet(), t.toString()))
+                    .collect(Collectors.joining());
         }
         return msg;
     }
@@ -68,11 +70,11 @@ public class MessageGenerator {
      * @param resultTasks  Details of the matched task.
      * @return String This returns details of the match tasks.
      */
-    public String generateResultTaskMsg(ArrayList<Task> resultTasks) {
+    public String generateResultTaskMsg(List<Task> resultTasks) {
         String msg = "Here are the matching tasks in your list:";
-        for (Task task : resultTasks) {
-            msg += "\n" + task.toString();
-        }
+        msg += resultTasks.stream()
+                .map(t -> "\n" + t.toString())
+                .collect(Collectors.joining());
         return  msg;
     }
 }

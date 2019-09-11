@@ -1,6 +1,5 @@
 package duke.memo.storage;
 
-import duke.memo.task.Task;
 import duke.memo.data.TaskList;
 
 import java.io.BufferedReader;
@@ -9,7 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.stream.Collectors;
 
 public class Storage {
     private FileReader fr;
@@ -41,10 +40,9 @@ public class Storage {
         String filePath = System.getProperty("user.dir") + "/data/duke.txt";
         try {
             FileWriter fw = new FileWriter(filePath);
-            Iterator<Task> iter = taskList.iterator();
-            while (iter.hasNext()) {
-                fw.write(iter.next().getPrintableMsg() + System.lineSeparator());
-            }
+            fw.write(taskList.stream()
+                    .map(t -> t.getPrintableMsg() + System.lineSeparator())
+                    .collect(Collectors.joining()));
             fw.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,12 +58,7 @@ public class Storage {
      */
     public ArrayList<String> load() throws IOException {
         BufferedReader br = new BufferedReader(fr);
-        ArrayList<String> lineList = new ArrayList<>();   //Store the records loaded from log
-        String line;
-        while ((line = br.readLine()) != null) {
-            lineList.add(line);
-        }
-        return lineList;
+        return (ArrayList<String>) br.lines().collect(Collectors.toList());
     }
 
 }

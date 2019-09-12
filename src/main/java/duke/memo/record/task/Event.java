@@ -1,4 +1,4 @@
-package duke.memo.task;
+package duke.memo.record.task;
 
 import duke.memo.exception.DukeException;
 import duke.memo.exception.NoDescriptionException;
@@ -9,19 +9,19 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Deadline extends Task {
-    private Date by;
+public class Event extends Task {
+    private Date at;
     private static String TASK_TYPE = "event";
-    private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy HHmm");
+    private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(("dd/MM/yyyy HHmm"));
 
     /**
-     * Constructor for Deadline Task.
+     * Constructor for Event Task.
      * Throw error if there is no time description or wrong format.
      *
-     * @param desc  Description for the Deadline Task.
+     * @param desc  Description for the Event Task.
      * @throws DukeException  If details missing or in wrong format.
      */
-    public Deadline(String desc) throws DukeException {
+    public Event(String desc) throws DukeException {
         super();
         if (desc.trim().isBlank()) {
             throw new NoDescriptionException(TASK_TYPE);
@@ -29,7 +29,7 @@ public class Deadline extends Task {
         try {
             String[] details = desc.split("/", 2);
             description = details[0];
-            by = DATE_FORMAT.parse(details[1]);
+            at = DATE_FORMAT.parse(details[1]);
         } catch (ParseException e) {
             throw new TimeFormatErrorException(TASK_TYPE);
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -38,17 +38,17 @@ public class Deadline extends Task {
     }
 
     /**
-     * Constructor for Deadline Task.
+     * Constructor for Event Task.
      * Throw error if there is no time description or wrong format.
      *
-     * @param taskDetails  Details for the Deadline Task.
+     * @param taskDetails  Details for the Event Task.
      * @throws DukeException  If details missing or in wrong format.
      */
-    public Deadline(String[] taskDetails) throws DukeException {
+    public Event(String[] taskDetails) throws DukeException {
         super(taskDetails[2], TASK_TYPE);
         isDone = taskDetails[1].equalsIgnoreCase("1");
         try {
-            by = DATE_FORMAT.parse(taskDetails[3]);
+            this.at = DATE_FORMAT.parse(taskDetails[3]);
         } catch (ParseException e) {
             throw new TimeFormatErrorException(TASK_TYPE);
         }
@@ -56,11 +56,12 @@ public class Deadline extends Task {
 
     @Override
     public String getPrintableMsg() {
-        return "D" + " | " + (isDone ? "1" : "0") + " | " + description + " | " + DATE_FORMAT.format(by);
+        return "E" + " | " + (isDone ? "1" : "0") + " | " + description + " | " + DATE_FORMAT.format(at);
     }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + DATE_FORMAT.format(by) + ")";
+        return "[E]" + super.toString() + " (at: " + DATE_FORMAT.format(at) + ")";
     }
+
 }

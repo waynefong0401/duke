@@ -1,11 +1,9 @@
-package duke.memo.task;
+package duke.memo.record.task;
 
 import duke.memo.exception.DukeException;
-import duke.memo.exception.NoDescriptionException;
+import duke.memo.record.Record;
 
-public abstract class Task {
-    protected String description;
-    protected boolean isDone;
+public abstract class Task extends Record {
 
     /**
      * Constructor for Task.
@@ -16,32 +14,16 @@ public abstract class Task {
      * @throws DukeException  If details missing or in wrong format.
      */
     public Task(String desc,String taskType) throws DukeException {
-        if (desc.isBlank()) {
-            throw new NoDescriptionException(taskType);
-        } else {
-            description = desc;
-        }
-        isDone = false;
+        super(desc, taskType);
     }
 
     public Task() {
-        isDone = false;
-    }
-
-    public Task taskDone() {
-        isDone = true;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
+        super();
     }
 
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
     }
-
-    public abstract String getPrintableMsg();
 
     @Override
     public String toString() {

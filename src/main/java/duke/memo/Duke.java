@@ -1,7 +1,7 @@
 package duke.memo;
 
 import duke.memo.command.Command;
-import duke.memo.data.TaskList;
+import duke.memo.data.RecordList;
 import duke.memo.exception.DukeException;
 import duke.memo.parser.InputParser;
 import duke.memo.storage.Storage;
@@ -12,8 +12,9 @@ import java.io.IOException;
 public class Duke {
 
     private Storage storage;
-    private TaskList taskList;
+    private RecordList recordList;
     private MessageGenerator msgGenerator;
+    public static final String filePath = "data/duke.txt";
 
     /**
      * Constructor for Duke.
@@ -22,11 +23,11 @@ public class Duke {
     public Duke() {
         try {
             msgGenerator = new MessageGenerator();
-            storage = new Storage("data/duke.txt");
-            taskList = new TaskList(storage.load());
+            storage = new Storage(filePath);
+            recordList = new RecordList(storage.load());
         } catch (DukeException e) {
             msgGenerator.generateErrorMsg(e.getMessage());
-            taskList = new TaskList();
+            recordList = new RecordList();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -41,7 +42,7 @@ public class Duke {
         Command c;
         try {
             c = InputParser.parse(input);
-            return c.execute(taskList, msgGenerator,storage);
+            return c.execute(recordList, msgGenerator, storage);
         } catch (DukeException e) {
             return e.getMessage();
         }

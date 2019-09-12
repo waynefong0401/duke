@@ -1,11 +1,11 @@
 package duke.memo.command;
 
-import duke.memo.data.TaskList;
+import duke.memo.data.RecordList;
 import duke.memo.exception.DukeException;
 import duke.memo.exception.NotNumberException;
 import duke.memo.exception.TaskNotExistException;
+import duke.memo.record.Record;
 import duke.memo.storage.Storage;
-import duke.memo.task.Task;
 import duke.memo.message.MessageGenerator;
 
 public class DoneCommand extends Command {
@@ -27,10 +27,10 @@ public class DoneCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList taskList, MessageGenerator msgGenerator, Storage storage) throws DukeException {
+    public String execute(RecordList recordList, MessageGenerator msgGenerator, Storage storage) throws DukeException {
         try {
-            Task doneTask = taskList.get(targetTaskNo).taskDone();
-            storage.store(taskList);
+            Record doneTask = recordList.get(targetTaskNo).taskDone();
+            storage.store(recordList);
             return msgGenerator.generateDoneTaskMsg(doneTask.toString());
         } catch (IndexOutOfBoundsException e) {
             throw new TaskNotExistException();

@@ -39,7 +39,7 @@ repositories {
 
 application {
     // Change this to your main class.
-    mainClassName = "duke.memo.Duke"
+    mainClassName = "duke.memo.Launcher"
 }
 
 run {

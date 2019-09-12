@@ -1,9 +1,9 @@
 package duke.memo.command;
 
-import duke.memo.data.TaskList;
+import duke.memo.data.RecordList;
 import duke.memo.message.MessageGenerator;
+import duke.memo.record.Record;
 import duke.memo.storage.Storage;
-import duke.memo.task.Task;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,10 +16,10 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList taskList, MessageGenerator msgGenerator, Storage storage) {
-        List<Task> resultTasks = taskList.stream()
+    public String execute(RecordList recordList, MessageGenerator msgGenerator, Storage storage) {
+        List<Record> resultTasks = recordList.stream()
                 .filter(t -> t.getDescription().contains(keyword))
                 .collect(Collectors.toList());
-        return msgGenerator.generateResultTaskMsg(resultTasks);
+        return msgGenerator.generateResultRecordMsg(resultTasks);
     }
 }

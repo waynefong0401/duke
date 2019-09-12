@@ -1,5 +1,6 @@
 package duke.memo.task;
 
+import duke.memo.record.task.ToDo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
 package duke.memo.storage;
 
-import duke.memo.data.TaskList;
+import duke.memo.data.RecordList;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -34,13 +34,13 @@ public class Storage {
     /**
      * Store file to local.
      *
-     * @param taskList List of tasks.
+     * @param recordList List of tasks.
      */
-    public void store(TaskList taskList) {
+    public void store(RecordList recordList) {
         String filePath = System.getProperty("user.dir") + "/data/duke.txt";
         try {
             FileWriter fw = new FileWriter(filePath);
-            fw.write(taskList.stream()
+            fw.write(recordList.stream()
                     .map(t -> t.getPrintableMsg() + System.lineSeparator())
                     .collect(Collectors.joining()));
             fw.close();

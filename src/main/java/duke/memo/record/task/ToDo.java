@@ -1,6 +1,7 @@
-package duke.memo.task;
+package duke.memo.record.task;
 
 import duke.memo.exception.DukeException;
+import duke.memo.record.task.Task;
 
 public class ToDo extends Task {
     private static String TASK_TYPE = "todo";
@@ -25,7 +26,7 @@ public class ToDo extends Task {
      */
     public ToDo(String[] taskDetails) throws DukeException {
         super(taskDetails[2], TASK_TYPE);
-        isDone = taskDetails[1].equalsIgnoreCase("1");
+        this.isDone = taskDetails[1].equalsIgnoreCase("1");
     }
 
     @Override

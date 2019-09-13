@@ -4,7 +4,7 @@ import duke.memo.exception.DukeException;
 import duke.memo.record.task.Task;
 
 public class ToDo extends Task {
-    private static String TASK_TYPE = "todo";
+    private static final String TASK_TYPE = "todo";
 
     /**
      * Constructor for ToDo Task.

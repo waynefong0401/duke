@@ -11,8 +11,8 @@ import java.util.Date;
 
 public class Event extends Task {
     private Date at;
-    private static String TASK_TYPE = "event";
-    private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(("dd/MM/yyyy HHmm"));
+    private static final String TASK_TYPE = "event";
+    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(("dd/MM/yyyy HHmm"));
 
     /**
      * Constructor for Event Task.
@@ -27,7 +27,7 @@ public class Event extends Task {
             throw new NoDescriptionException(TASK_TYPE);
         }
         try {
-            String[] details = desc.split("/", 2);
+            String[] details = desc.split(" /at ", 2);
             description = details[0];
             at = DATE_FORMAT.parse(details[1]);
         } catch (ParseException e) {

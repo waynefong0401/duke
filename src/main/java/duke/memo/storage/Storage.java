@@ -21,6 +21,11 @@ public class Storage {
      * @throws IOException Unpredicted I/O exception.
      */
     public Storage(String filePath) throws IOException {
+        String folderPath = this.filePath = System.getProperty("user.dir") + "/data";
+        File folder = new File(folderPath);
+        if (!(folder.exists() && folder.isDirectory())) {
+            folder.mkdir();
+        }
         this.filePath = System.getProperty("user.dir") + "/" + filePath;
         File file = new File(this.filePath);
         if (file.createNewFile()) {

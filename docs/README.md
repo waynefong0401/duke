@@ -144,7 +144,7 @@ Example:
 
 `find <keyword>`
 
-Find the records which the description contain "<keyword>`.
+Find the records which the description contain `<keyword>`.
   
 Example:
 

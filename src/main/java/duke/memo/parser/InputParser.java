@@ -1,6 +1,13 @@
 package duke.memo.parser;
 
-import duke.memo.command.*;
+import duke.memo.command.AddCommand;
+import duke.memo.command.Command;
+import duke.memo.command.DeleteCommand;
+import duke.memo.command.DoneCommand;
+import duke.memo.command.ExitCommand;
+import duke.memo.command.ExpenseCommand;
+import duke.memo.command.FindCommand;
+import duke.memo.command.ListCommand;
 import duke.memo.exception.DukeException;
 import duke.memo.exception.NoDescriptionException;
 import duke.memo.exception.TaskTypeError;

@@ -1,4 +1,3 @@
-T | 0 | read a book
-D | 0 | return the book | 02/10/2019 1600
-E | 0 | attend meeting | 25/09/2019 1400
-T | 0 | submit duke
+EX | buy a book | 10
+D | 0 | return book | 02/10/2019 1600
+E | 0 | have meeting | 02/10/2019 1600

@@ -18,7 +18,7 @@ public class ExpenseCommand extends Command {
 
     @Override
     public String execute(RecordList recordList, MessageGenerator msgGenerator, Storage storage) throws DukeException {
-        String[] expenseDetails = cmd.split("/", 2);
+        String[] expenseDetails = cmd.split(" / ", 2);
         try {
             Expense curExpense = new Expense(expenseDetails[0], expenseDetails[1]);
             recordList.add(curExpense);

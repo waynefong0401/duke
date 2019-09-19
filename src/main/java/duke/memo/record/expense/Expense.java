@@ -43,7 +43,7 @@ public class Expense extends Record {
             throw new NoDescriptionException(EXPENSE_TYPE);
         }
         try {
-            String[] details = desc.split("/", 2);
+            String[] details = desc.split(" / ", 2);
             description = details[0];
             amount = Integer.parseInt(details[1]);
         } catch (ArrayIndexOutOfBoundsException e) {

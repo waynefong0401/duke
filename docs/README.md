@@ -46,23 +46,23 @@ Duke is a memo chat bot that you can use in your daily life. It is a Command Lin
 
     ![User interface](Ui.png)
 
-5. Type the command and enter to execute.
+5. Type the command and enter to execute it.
 
 ## 3. Features 
 
 ## 3.1. Add a record:
 
-There are two kind of record: Task and Expense.
+There are two kinds of record: Task and Expense.
 
 ### 3.1.1. Add a task
 
-There are three kind of task: todo, event and deadline.
+There are three kinds of task: todo, event and deadline.
 
 #### 3.1.1.1. Add a todo task: `todo`
 
 `todo <description>`
 
-Adds a `todo` task with `<description>` to the record list.
+Add a `todo` task with `<description>` to the record list.
 
 Example: 
 
@@ -120,7 +120,7 @@ Example:
 
 `delete <index>`
 
-Delete a record with the corresponding `<index>` in the record list(order by added time). The `<index>` need to within the bound of the record list. You might check the record index using `list`.
+Delete a record with the corresponding `<index>` in the record list(order by added time). The `<index>` need to be within the bound of the record list. You might check the record index using `list`.
 
 Example:
 
@@ -132,7 +132,7 @@ Example:
 
 `done <index>`
 
-Mark a task with the corresponding `<index>` in the record list(order by added time) as `done`. The `<index>` need to within the bound of the record list. You might check the record index using `list`.
+Mark a task with the corresponding `<index>` in the record list(order by added time) as `done`. The `<index>` need to be within the bound of the record list. You might check the record index using `list`.
 
 Example:
 
@@ -144,7 +144,7 @@ Example:
 
 `find <keyword>`
 
-Find the records which the description contain `<keyword>`.
+Find the records with the description that contain `<keyword>`.
   
 Example:
 
@@ -154,7 +154,7 @@ Example:
 
 `bye`
 
-Exit the program. The textbox and sendbutton will be disable, you will not be able to execute command now.
+Exit the program. The textbox and sendbutton will be disabled, you will not be able to execute command then.
 
 Example:
 
@@ -162,5 +162,5 @@ Example:
 
 ## 3.7. Save and load records
 
-When you enter the Duke, it will automatically load the records in the `data/duke.txt`. Also, when you make any change to the record list(add, done
+When you enter the Duke, it will automatically load the records in the `data/duke.txt`. Also, when you make any change to the record list, the local file will be updated.
 

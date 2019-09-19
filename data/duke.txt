@@ -1,11 +1,4 @@
-T | 0 | a
-D | 0 | a | 02/02/2222 2222
-E | 0 | a | 02/02/2222 2222
-T | 0 | a
-T | 0 | a
-T | 0 | a
-T | 0 | a
-T | 0 | a
-T | 0 | a
-T | 0 | a
-T | 0 | a
+T | 0 | read a book
+D | 0 | return the book | 02/10/2019 1600
+E | 0 | attend meeting | 25/09/2019 1400
+T | 0 | submit duke

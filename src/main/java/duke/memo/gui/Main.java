@@ -7,6 +7,7 @@ import duke.memo.Duke;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -24,6 +25,11 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+
+            Image icon = new Image(this.getClass().getResourceAsStream("/images/shoebill-icon.jpg"));
+            stage.getIcons().add(icon);
+            stage.setTitle("Duke");
+
             fxmlLoader.<MainWindow>getController().setDuke(duke);
             fxmlLoader.<MainWindow>getController().showHelloMsg();
             stage.show();

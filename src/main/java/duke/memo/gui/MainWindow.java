@@ -41,8 +41,10 @@ public class MainWindow extends AnchorPane {
      * Add a dialogBox with welcome message to the dialogBox container.
      */
     public void showHelloMsg() {
+        String input = "list";
+        String response = duke.getResponse(input);
         dialogContainer.getChildren().addAll(
-                DialogBox.getDukeDialog("Hello, this is Duke! How can I help you?",dukeImage)
+                DialogBox.getDukeDialog("Hello, this is Duke!\n\n" + response + "\n\nHow can I help you?",dukeImage)
         );
     }
 

@@ -38,7 +38,7 @@ Duke is a memo chat bot that you can use in your daily life. It is a Command Lin
 
 1. Installed  `Java 11` or above on your local machine.
 
-2. Download duke-v1.0.3.jar [here](https://github.com/waynefong0401/duke/releases/tag/v1.0.3).
+2. Download duke-v1.0.3.jar [here](https://github.com/waynefong0401/duke/releases/tag/A-Release).
 
 3. Move the jar file to your destination folder.
 
